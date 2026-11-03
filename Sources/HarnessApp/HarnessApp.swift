@@ -25,7 +25,7 @@ struct HarnessApp: App {
     @NSApplicationDelegateAdaptor(HarnessApplicationDelegate.self) private var delegate
     @State private var state = AppState()
     var body: some Scene {
-        MenuBarExtra("harnessmd", systemImage: "square.stack.3d.up") {
+        MenuBarExtra {
             Text("harnessmd").font(.headline)
             Text("\(state.activeSources.count) sources · \(state.liveFiles.count) files · \(state.changesToday) changes today")
             Divider()
@@ -48,6 +48,8 @@ struct HarnessApp: App {
             CheckForUpdatesCommand()
             Divider()
             Button("Quit harnessmd") { NSApplication.shared.terminate(nil) }.keyboardShortcut("q")
+        } label: {
+            Image(nsImage: BrandMark.menuBarImage()).accessibilityLabel("harnessmd")
         }
     }
 }

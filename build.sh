@@ -8,6 +8,8 @@ app="${DIST_DIR:-dist}/harnessmd.app"
 mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources" "$app/Contents/Frameworks"
 cp "$bin/HarnessApp" "$app/Contents/MacOS/HarnessApp"
 cp Support/Info.plist "$app/Contents/Info.plist"
+# Rendered from Support/AppIcon.svg by `make icon`; committed so builds need no renderer.
+cp Support/AppIcon.icns "$app/Contents/Resources/AppIcon.icns"
 if [ -n "${SPARKLE_PUBLIC_ED_KEY:-}" ]; then
     printf '%s\n' "$SPARKLE_PUBLIC_ED_KEY" | grep -Eq '^[A-Za-z0-9+/]{43}=$' || { printf 'SPARKLE_PUBLIC_ED_KEY must be a base64-encoded 32-byte Ed25519 key\n' >&2; exit 1; }
     /usr/libexec/PlistBuddy -c "Add :SUPublicEDKey string $SPARKLE_PUBLIC_ED_KEY" "$app/Contents/Info.plist"

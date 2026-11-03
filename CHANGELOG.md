@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- An app icon and a matching menu bar mark: instruction pages held by a
+  harness strap. The dashboard sidebar shows the icon beside the name.
+
 ## [0.1.0]
 
 First public release of the local-first macOS menu bar app for coding-agent

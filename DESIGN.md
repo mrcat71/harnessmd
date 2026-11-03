@@ -35,6 +35,7 @@ This document records the decisions, their rationale, and what is deferred. [REA
 ## App shape
 
 - Menu bar resident: `LSUIElement = true` (no Dock icon), `MenuBarExtra` with a template status icon.
+- Identity: instruction pages held by a harness strap, for collected files kept safe. The app icon is `Support/AppIcon.svg` on the macOS grid (an 824 px body with 185.4 px corners), rendered by `make icon` into the committed `AppIcon.icns`. macOS 27 shows it without the gray backing it gives nonconforming legacy icons. The menu bar mark is the same page and strap reduced to an 18-point template glyph, drawn in code so it stays vector and needs no SwiftPM resource bundle.
 - Launch at login via `SMAppService.mainApp.register()`, toggled from Settings, which shows a pending approval and opens Login Items.
 - Not sandboxed (reads all configured repo roots and global config dirs). Ad-hoc code signature for personal use; notarization can be added if it is ever distributed.
 

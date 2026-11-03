@@ -65,9 +65,10 @@ struct DashboardView: View {
     private var sidebar: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 10) {
-                Image(systemName: "square.stack.3d.up.fill").font(.title2).foregroundStyle(accent)
+                Image(nsImage: NSApplication.shared.applicationIconImage).resizable().frame(width: 34, height: 34).accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("harnessmd").font(.system(size: 18, weight: .semibold, design: .rounded))
+                    (Text("harness") + Text("md").font(.system(size: 17, weight: .semibold, design: .monospaced)).foregroundStyle(accent))
+                        .font(.system(size: 18, weight: .semibold, design: .rounded)).accessibilityLabel("harnessmd")
                     Text("YOUR AGENT LIBRARY").font(.system(size: 9, weight: .medium)).tracking(1.5).foregroundStyle(.secondary)
                 }
             }.padding(20).padding(.top, 8)

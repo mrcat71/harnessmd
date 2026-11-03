@@ -21,7 +21,7 @@ launching it. `make run` builds and launches the normal app. The Makefile wraps
 `build.sh`; `make build CONFIGURATION=debug` selects a debug build.
 
 The app starts in the menu bar, without a Dock icon or an initial dashboard
-window. Click the stacked-layers icon and choose **Open Dashboard**. Closing the
+window. Click the harnessmd icon (a page held by a strap) and choose **Open Dashboard**. Closing the
 dashboard leaves collection running. **Quit harnessmd** stops it.
 `make run` quits a running harnessmd first (normal or demo), because `open` would
 only bring the old instance forward instead of launching the new build. If you
@@ -442,6 +442,12 @@ dashboard with generated fixture repositories and a separate temporary store;
 it never enables global collection. Demo stores remain in the macOS temp
 directory for inspection and are separate from real data. Quit the demo before
 launching the normal app.
+
+The app icon's source is `Support/AppIcon.svg`, drawn on the macOS icon grid.
+After editing it, run `make icon`: AppKit renders the SVG and `iconutil` writes
+the committed `Support/AppIcon.icns`, so builds need no renderer. AppKit skips
+SVG filters, so the artwork draws its shadows as plain shapes. The menu bar mark
+is drawn in code (`BrandMark.swift`) as a template image.
 
 `HarnessKit` owns discovery, privacy checks, SQLite/blob persistence, analysis,
 watchers, proposal parsing, CLI execution, and restore. `HarnessApp` owns the

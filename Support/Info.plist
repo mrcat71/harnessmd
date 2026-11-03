@@ -6,6 +6,7 @@
     <key>CFBundleName</key><string>harnessmd</string>
     <key>CFBundleDisplayName</key><string>harnessmd</string>
     <key>CFBundleExecutable</key><string>HarnessApp</string>
+    <key>CFBundleIconFile</key><string>AppIcon</string>
     <key>CFBundlePackageType</key><string>APPL</string>
     <key>CFBundleShortVersionString</key><string>0.1.0</string>
     <key>CFBundleVersion</key><string>0.1.0</string>

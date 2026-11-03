@@ -1,7 +1,7 @@
 CONFIGURATION ?= release
 APP := dist/harnessmd.app
 
-.PHONY: all build run demo test self-test package appcast ci help
+.PHONY: all build run demo test self-test package appcast icon ci help
 
 all: build
 
@@ -32,8 +32,12 @@ package:
 appcast:
 	bash scripts/make-appcast.sh
 
+# Rerun after editing the artwork; the build copies the committed .icns.
+icon:
+	swift scripts/make-icon.swift Support/AppIcon.svg Support/AppIcon.icns
+
 self-test: build
 	"$(APP)/Contents/MacOS/HarnessApp" --self-test
 
 help:
-	@printf '%s\n' 'make              Build and ad-hoc sign the release app' 'make run          Build and launch the app' 'make demo         Build and launch isolated fixture data' 'make test         Run unit tests' 'make ci           Run the CI checks locally' 'make package      Build ZIP and DMG (requires SPARKLE_PUBLIC_ED_KEY)' 'make appcast      Sign the feed (requires SPARKLE_ED_PRIVATE_KEY)' 'make self-test    Build and run the packaged fixture self-test' 'make build CONFIGURATION=debug    Build a debug app'
+	@printf '%s\n' 'make              Build and ad-hoc sign the release app' 'make run          Build and launch the app' 'make demo         Build and launch isolated fixture data' 'make test         Run unit tests' 'make ci           Run the CI checks locally' 'make package      Build ZIP and DMG (requires SPARKLE_PUBLIC_ED_KEY)' 'make appcast      Sign the feed (requires SPARKLE_ED_PRIVATE_KEY)' 'make icon         Render Support/AppIcon.svg into Support/AppIcon.icns' 'make self-test    Build and run the packaged fixture self-test' 'make build CONFIGURATION=debug    Build a debug app'

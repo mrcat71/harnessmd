@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- harnessmd: instruction pages held by a harness strap. macOS grid: an 824 px body with 185.4 px corners.
+       Shadows are plain shapes, not filters, because AppKit's SVG renderer (scripts/make-icon.swift) skips filters. -->
+  <defs>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E9A7F"/>
+      <stop offset="1" stop-color="#135747"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="0.25" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.12"/>
+    </linearGradient>
+    <radialGradient id="ambient" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#04241C" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#04241C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="strap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6C25A"/>
+      <stop offset="1" stop-color="#DD932D"/>
+    </linearGradient>
+    <linearGradient id="strapShadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7A4A0E" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#7A4A0E" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4F6F7"/>
+      <stop offset="0.55" stop-color="#C3CCD0"/>
+      <stop offset="1" stop-color="#8A979D"/>
+    </linearGradient>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185.4" fill="url(#ground)"/>
+  <rect x="101.5" y="101.5" width="821" height="821" rx="184" fill="none" stroke="url(#rim)" stroke-width="3"/>
+  <ellipse cx="512" cy="772" rx="290" ry="64" fill="url(#ambient)"/>
+  <!-- the stack: two earlier versions behind the current page -->
+  <rect x="300" y="232" width="424" height="548" rx="30" fill="#D6CEBE" transform="rotate(-7 512 506)"/>
+  <rect x="300" y="232" width="424" height="548" rx="30" fill="#EBE5D9" transform="rotate(5 512 506)"/>
+  <rect x="300" y="242" width="424" height="548" rx="30" fill="#000000" fill-opacity="0.07"/>
+  <rect x="300" y="237" width="424" height="548" rx="30" fill="#000000" fill-opacity="0.06"/>
+  <rect x="300" y="232" width="424" height="548" rx="30" fill="#FCFAF5"/>
+  <!-- a Markdown heading and body lines -->
+  <g stroke="#1F7A63" stroke-width="13" stroke-linecap="round">
+    <line x1="365" y1="296" x2="355" y2="366"/>
+    <line x1="395" y1="296" x2="385" y2="366"/>
+    <line x1="345" y1="318" x2="407" y2="318"/>
+    <line x1="341" y1="344" x2="403" y2="344"/>
+  </g>
+  <rect x="430" y="314" width="200" height="30" rx="15" fill="#1F7A63"/>
+  <g fill="#DAD5CA">
+    <rect x="345" y="404" width="334" height="18" rx="9"/>
+    <rect x="345" y="442" width="286" height="18" rx="9"/>
+    <rect x="345" y="688" width="312" height="18" rx="9"/>
+    <rect x="345" y="726" width="246" height="18" rx="9"/>
+  </g>
+  <!-- the strap wraps past the stack's edges -->
+  <rect x="300" y="634" width="424" height="22" fill="url(#strapShadow)"/>
+  <rect x="264" y="526" width="496" height="108" rx="12" fill="#B06F1C"/>
+  <rect x="284" y="526" width="456" height="108" fill="url(#strap)"/>
+  <g stroke="#FFF4DA" stroke-opacity="0.8" stroke-width="5" stroke-dasharray="16 11" fill="none">
+    <line x1="284" y1="545" x2="740" y2="545"/>
+    <line x1="284" y1="615" x2="740" y2="615"/>
+  </g>
+  <!-- buckle: a frame with its prong resting across it -->
+  <rect x="466" y="511" width="104" height="148" rx="26" fill="none" stroke="#7A4A0E" stroke-opacity="0.35" stroke-width="22"/>
+  <rect x="466" y="506" width="104" height="148" rx="26" fill="none" stroke="#6F7C82" stroke-width="26"/>
+  <rect x="466" y="506" width="104" height="148" rx="26" fill="none" stroke="url(#metal)" stroke-width="21"/>
+  <rect x="459" y="567" width="124" height="26" rx="13" fill="#6F7C82"/>
+  <rect x="461.5" y="569.5" width="119" height="21" rx="10.5" fill="url(#metal)"/>
+</svg>
