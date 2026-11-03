@@ -353,13 +353,10 @@ key, verifies the signed feed and checksums, extracts the ZIP, and mounts the
 DMG read-only to verify its signature and Applications link. Its artifacts and
 keys stay in a fresh temporary directory, never in the distributable `dist/`.
 
-Set the repository variable `MACOS_RUNNER` to your chosen macOS runner label.
-No default runner is silently selected. With explicit approval, `macos-26`
-matches Avi's GitHub-hosted setup. Self-hosted labels must identify a trusted
-macOS runner with Swift 6.1+; never send untrusted code to it. Fork PR checks
-run only when `MACOS_RUNNER` is GitHub-hosted `macos-26`; otherwise they are
-skipped rather than sent to a self-hosted runner. Signing secrets are never
-provided to this workflow.
+CI and release jobs use GitHub-hosted `macos-26` runners directly, matching
+Avi's setup. No runner variable or self-hosted runner registration is needed.
+Fork PRs run the same CI checks on GitHub-hosted runners. Signing secrets are
+never provided to the CI workflow.
 
 `.github/renovate.json` covers Swift packages and pinned GitHub Actions. It
 requests owner review, waits seven days for ordinary releases with timestamps,
@@ -383,13 +380,10 @@ Keep the same key pair across releases; changing it locks out installed copies.
 The public variable is baked into each packaged app as `SUPublicEDKey`.
 
 After generating the Keychain key, these user-run commands configure GitHub
-Actions. They change repository variables/secrets; the private key is passed
-through a protected temporary file and is not printed. The runner command is
-only for an explicitly selected GitHub-hosted `macos-26` runner; substitute
-your chosen trusted self-hosted label otherwise.
+Actions signing. They change repository variables/secrets; the private key is
+passed through a protected temporary file and is not printed.
 
 ```sh
-gh variable set MACOS_RUNNER --repo mrcat71/harnessmd --body macos-26
 public_key=$(.build/artifacts/sparkle/Sparkle/bin/generate_keys --account harnessmd -p) && test -n "$public_key" && gh variable set SPARKLE_PUBLIC_ED_KEY --repo mrcat71/harnessmd --body "$public_key"
 umask 077; keydir=$(mktemp -d -t harnessmd-signing) && .build/artifacts/sparkle/Sparkle/bin/generate_keys --account harnessmd -x "$keydir/private" && gh secret set SPARKLE_ED_PRIVATE_KEY --repo mrcat71/harnessmd < "$keydir/private" && rm "$keydir/private" && rmdir "$keydir"
 ```
