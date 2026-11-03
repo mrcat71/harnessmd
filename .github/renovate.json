@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":dependencyDashboard"],
+  "timezone": "Europe/Madrid",
+  "reviewers": ["mrcat71"],
+  "assignAutomerge": true,
+  "automerge": false,
+  "prCreation": "status-success",
+  "minimumReleaseAge": "7 days",
+  "minimumReleaseAgeBehaviour": "timestamp-required",
+  "internalChecksFilter": "strict",
+  "internalChecksAsSuccess": false,
+  "pinDigests": true,
+  "labels": ["dependencies", "renovate"],
+  "packageRules": [
+    {
+      "description": "Review action updates together while preserving SHA pins",
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "addLabels": ["ci"]
+    },
+    {
+      "description": "Test backward-compatible Swift dependency updates together",
+      "matchManagers": ["swift"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "swift dependencies (minor + patch)"
+    },
+    {
+      "description": "Review Swift major upgrades independently",
+      "matchManagers": ["swift"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["major"]
+    }
+  ]
+}
