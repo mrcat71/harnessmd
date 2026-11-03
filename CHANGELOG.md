@@ -1,11 +1,23 @@
 # Changelog
 
-## [Unreleased]
+## [0.1.1]
 
 ### Added
 
 - An app icon and a matching menu bar mark: instruction pages held by a
   harness strap. The dashboard sidebar shows the icon beside the name.
+
+### Installation and limitations
+
+- Requires macOS 14 or later. Choose the download matching your Mac's
+  architecture: `arm64` for Apple silicon or `x86_64` for Intel, when available.
+- Open the DMG and drag `harnessmd.app` to Applications. The app starts in the
+  menu bar; choose **Open Dashboard** to select collection folders.
+- This build is ad-hoc signed, not Developer ID signed or notarized. The first
+  downloaded launch may require **System Settings > Privacy & Security > Open
+  Anyway**. Sparkle update signatures do not replace Apple notarization.
+- The local store is unencrypted. Credential filtering is heuristic, not a
+  guarantee; treat collected snapshots as sensitive and back up the store.
 
 ## [0.1.0]
 
