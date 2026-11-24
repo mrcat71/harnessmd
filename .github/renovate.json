@@ -2,8 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":dependencyDashboard"],
   "timezone": "Europe/Madrid",
-  "reviewers": ["mrcat71"],
-  "assignAutomerge": true,
   "automerge": false,
   "prCreation": "status-success",
   "minimumReleaseAge": "7 days",

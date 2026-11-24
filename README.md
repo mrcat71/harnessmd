@@ -362,10 +362,10 @@ Fork PRs run the same CI checks on GitHub-hosted runners. Signing secrets are
 never provided to the CI workflow.
 
 `.github/renovate.json` covers Swift packages and pinned GitHub Actions. It
-requests owner review, waits seven days for ordinary releases with timestamps,
-and leaves automerge off. Renovate branch CI runs before PR creation because
-`prCreation` is `status-success`. Install/enable the Renovate GitHub App for
-this repository separately; the config does not grant it access.
+waits seven days for ordinary releases with timestamps and leaves merging
+manual without requesting owner review. Renovate branch CI runs before PR
+creation because `prCreation` is `status-success`. Install/enable the Renovate
+GitHub App for this repository separately; the config does not grant it access.
 
 ### Signing setup and publication
 
