@@ -353,8 +353,11 @@ key, verifies the signed feed and checksums, extracts the ZIP, and mounts the
 DMG read-only to verify its signature and Applications link. Its artifacts and
 keys stay in a fresh temporary directory, never in the distributable `dist/`.
 
-CI and release jobs use GitHub-hosted `macos-26` runners directly, matching
-Avi's setup. No runner variable or self-hosted runner registration is needed.
+CI and release jobs use GitHub-hosted runners directly, matching Avi's setup:
+`macos-26` for everything that builds, tests, packages, or signs, and
+`ubuntu-24.04` for the release publish job, which only verifies checksums and
+uploads the finished assets. No runner variable or self-hosted runner
+registration is needed.
 Fork PRs run the same CI checks on GitHub-hosted runners. Signing secrets are
 never provided to the CI workflow.
 
